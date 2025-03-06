@@ -15,6 +15,10 @@
     width: 250px; 
     height: 40px; 
     box-sizing: border-box;
+    border-radius: 0;
+    font-size: 16px;
+    box-shadow: none;
+    border: 1px solid #333;
 }
 .write_area button {
     background-color: #3a3ae3; 
@@ -27,6 +31,7 @@
     height: 40px; 
     padding: 0 16px; 
     margin-left: 8px;
+    flex-shrink: 0;
 }
 .view_area {
     display: flex; 
