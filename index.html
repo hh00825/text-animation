@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrap">
+        <form>
+            <p>애니메이션을 적용할 텍스트를 입력하세요.</p>
+            <div class="write_area">
+                <input type="text">
+                <button type="submit">입력 완료</button>
+            </div>
+        </form>
+
+        <div class="view_area">
+            <p></p>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    const button = document.querySelector(".write_area button")
+    const input = document.querySelector(".write_area input")
+    const viewArea = document.querySelector(".view_area p")
+    let inputValue, textItems, splitJoinItems
+
+    button.addEventListener("click",(e) => {
+        e.preventDefault();
+
+        if(input.value){
+            inputValue = input.value
+            textItems = inputValue.split("");
+
+            splitJoinItems = textItems.map( (textItem,index) => {
+                return `<div class="text_item"><span style="transition-delay:${index}00ms">${textItem}</span></div>`                
+            });
+            viewArea.innerHTML = splitJoinItems.join("");
+            
+            viewArea.classList.remove("animate");
+            setTimeout(() => {
+                viewArea.classList.add("animate");
+            }, 200);
+
+        }else{
+            alert("텍스트를 입력하세요.")
+            input.focus()
+            viewArea.innerHTML = '';
+        }
+    });
+</script>
